@@ -1,19 +1,25 @@
 package com.ellenteste.demo.controller;
 import com.ellenteste.demo.model.Servidor;
-import org.springframework.http.ResponseEntity;
+import com.ellenteste.demo.service.ServidorService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/Servidor")
+@RequestMapping("/servidor")
 public class ServidorController {
 
+    private final ServidorService servidorService;
+
+    public ServidorController(ServidorService servidorService) {
+        this.servidorService = servidorService;
+    }
+
     @PostMapping("/cadastrarServidor")
-    public String cadastrarServidor(@RequestBody Servidor servidor){
-        return "show";
+    public Servidor cadastrarServidor(@RequestBody Servidor servidor){
+        return servidorService.saveServidor(servidor);
     }
 
     @GetMapping("/buscarServidor")
-    public ResponseEntity<Servidor> buscarServidor(@RequestParam Long matricula){
-        return null;
+    public Servidor buscarServidor(@RequestParam Long matricula){
+        return servidorService.findServidor(matricula);
     }
 }
