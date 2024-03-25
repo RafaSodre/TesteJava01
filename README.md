@@ -10,6 +10,7 @@ A API deve oferecer as seguintes funcionalidades:
 2. Busca de servidor por matrícula
 3. Cadastro de lotação
 4. Consulta de lotação por nome
+5. (Rotas adicionais implementadas para melhor apredizado de codigo)
 
 ### Cadastro de Servidor
 O cadastro de servidor deve incluir os seguintes campos:
