@@ -10,6 +10,7 @@ import com.ellenteste.demo.repository.LotacaoRepository;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,8 +34,10 @@ public class LotacaoService {
     public List<Lotacao> listarTodasLotacoes(){
         return lotacaoRepository.findAll();
     }
-    public Lotacao saveLotacao(Lotacao lotacao){
-        lotacaoNomeJaexiste(lotacao.getNome());
+
+    public Lotacao saveLotacao(String nome){
+        lotacaoNomeJaExiste(nome);
+        Lotacao lotacao = new Lotacao(nome,new Date());
         return lotacaoRepository.save(lotacao);
     }
 
@@ -50,12 +53,11 @@ public class LotacaoService {
 
     public Lotacao editarLotacao(LotacaoDto lotacaoDto) {
         Lotacao lotacaoById = findLotacaoById(lotacaoDto.getId());
-        lotacaoNomeJaexiste(lotacaoDto.getNome());
+        lotacaoNomeJaExiste(lotacaoDto.getNome());
         Lotacao lotacao = new Lotacao(lotacaoDto.getId(),lotacaoDto.getNome(),lotacaoById.getDataCadastro());
         return lotacaoRepository.save(lotacao);
     }
-
-    private void lotacaoNomeJaexiste(String nome){
+    private void lotacaoNomeJaExiste(String nome){
         Optional<Lotacao> lotacao = lotacaoRepository.findByNome(nome);
         if (lotacao.isPresent()) {
             throw new LotacaoComNomeJaExistenteException("Ja existe Lotacao com o nome: " + nome);

@@ -26,4 +26,9 @@ public class Lotacao {
     private String nome;
 
     private Date dataCadastro;
+
+    public Lotacao(String nome, Date dataCadastro) {
+        this.nome = nome;
+        this.dataCadastro = dataCadastro;
+    }
 }

@@ -5,9 +5,9 @@ import com.ellenteste.demo.model.Lotacao;
 import com.ellenteste.demo.service.LotacaoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,8 +24,8 @@ public class LotacaoController {
 
     @Operation(summary = "Cadastrar uma nova lotação")
     @PostMapping("/cadastrarLocatao")
-    public Lotacao cadastrarLocatao(@Validated @RequestBody Lotacao lotacao){
-        return lotacaoService.saveLotacao(lotacao);
+    public Lotacao cadastrarLocatao(@Valid @RequestParam String nome){
+        return lotacaoService.saveLotacao(nome);
     }
 
     @Operation(summary = "Editar uma lotação existente")

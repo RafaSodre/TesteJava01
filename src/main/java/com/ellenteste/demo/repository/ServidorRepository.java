@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface ServidorRepository extends JpaRepository<Servidor, Long> {
 
     Optional<Servidor> findById(Long id);
-
+    Optional<Servidor> findByCpf(String cpf);
     List<Servidor> findAllByIdLotacao(Long idLotacao);
 
 }
