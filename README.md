@@ -29,5 +29,6 @@ O cadastro de lotação deve incluir os seguintes campos:
 - Java
 - Spring Boot
 - Banco de dados (H2)
+- Swagger
 
 
