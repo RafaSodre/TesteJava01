@@ -7,8 +7,9 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.NotBlank;
 
-import javax.validation.constraints.NotEmpty;
+
 import java.util.Date;
 
 @AllArgsConstructor
@@ -20,7 +21,8 @@ public class Lotacao {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
+
+    @NotBlank(message = "Voce precisa adicionar um nome")
     private String nome;
 
     private Date dataCadastro;

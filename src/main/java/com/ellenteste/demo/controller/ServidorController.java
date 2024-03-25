@@ -1,6 +1,8 @@
 package com.ellenteste.demo.controller;
 import com.ellenteste.demo.model.Servidor;
 import com.ellenteste.demo.service.ServidorService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,5 +23,10 @@ public class ServidorController {
     @GetMapping("/buscarServidor")
     public Servidor buscarServidor(@RequestParam Long matricula){
         return servidorService.findServidor(matricula);
+    }
+    @DeleteMapping("deletarServidor/{id}")
+    public ResponseEntity deletarServidor(@PathVariable Long id){
+        servidorService.deleteServidor(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Servidor deletado com sucesso");
     }
 }
