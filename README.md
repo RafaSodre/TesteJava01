@@ -27,8 +27,6 @@ O cadastro de lotação deve incluir os seguintes campos:
 ## Tecnologias Utilizadas
 - Java
 - Spring Boot
-- Banco de dados (ex: MySQL, PostgreSQL, H2)
+- Banco de dados (H2)
 
-## Estrutura do Projeto
-A estrutura do projeto pode ser organizada da seguinte forma:
 
